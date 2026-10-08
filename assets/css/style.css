@@ -1,0 +1,1553 @@
+/* ================================
+   KeyGati - Global Styles
+   Tailwind inline config mirror: timemode.html / words.html extend keygati colors
+   (background/bg, dark, teal, yellow, orange, coral, light) must stay in sync
+   with :root vars below. Single source: :root. Mirror copies: 2 inline configs.
+================================ */
+
+:root {
+    --dark: #264653;
+    --dark-rgb: 38, 70, 83;
+    --teal: #2A9D8F;
+    --teal-rgb: 42, 157, 143;
+    --teal-dark: #1F7A6E;
+    --teal-ink: #175E54;
+    --bg: #A8DADC;
+    --coral: #E76F51;
+    --orange: #F4A261;
+    --light: #F1FAEE;
+    --light-rgb: 241, 250, 238;
+    --yellow: #E9C46A;
+    --white: #FFFFFF;
+    --white-rgb: 255, 255, 255;
+    --mint: #EDF6EA;
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --shadow-sm: 0 2px 8px rgba(var(--dark-rgb), 0.04);
+    --shadow-md: 0 8px 24px rgba(var(--dark-rgb), 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typing text uses a monospace font */
+
+.typing-text {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 500;
+    word-spacing: 0.35rem;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+    max-width: 100%;
+}
+
+/* Remove the default textarea outline */
+
+textarea:focus {
+    outline: none;
+}
+
+/* Improve keyboard focus visibility */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+}
+
+/* Prevent text selection on interface controls */
+
+button {
+    user-select: none;
+}
+
+/* Mobile typing text adjustment */
+
+@media (max-width: 640px) {
+    .typing-text {
+        font-size: 1rem;
+        line-height: 2;
+        word-spacing: 0.2rem;
+    }
+}
+
+/* Typing cursor */
+
+.typing-cursor {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.typing-cursor::after {
+    content: "";
+    position: absolute;
+    width: 0.65em;
+    height: 2px;
+    background-color: var(--teal);
+    left: 0;
+    top: 0em;
+    animation: cursor-blink 1s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.35'/%3E%3C/svg%3E");
+
+    opacity: 0.20;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.typing-text {
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.typing-word {
+    white-space: nowrap;
+}
+
+/* =========================================================
+LANDING PAGE
+========================================================= */
+
+.landing-page,
+.legal-page {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: "Inter", sans-serif;
+    min-height: 100vh;
+}
+
+.landing-page {
+    overflow: hidden;
+}
+
+.legal-page {
+    overflow-y: auto;
+}
+
+/* ---------------------------------------------------------
+Landing Navigation
+--------------------------------------------------------- */
+
+.landing-header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 50;
+
+padding: 16px 24px 0;
+
+}
+
+.landing-nav {
+    max-width: 1177px;
+    height: 64px;
+
+    margin: 0 auto;
+    padding: 0 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(var(--dark-rgb), 0.12);
+
+    border: 1px solid rgba(var(--white-rgb), 0.45);
+    border-radius: 999px;
+
+    box-shadow:
+        0 8px 24px rgba(var(--dark-rgb), 0.08),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.45);
+
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+/* ---------------------------------------------------------
+Logo
+--------------------------------------------------------- */
+
+.landing-logo {
+display: flex;
+align-items: center;
+
+text-decoration: none;
+
+font-size: 20px;
+font-weight: 700;
+letter-spacing: -0.025em;
+
+}
+
+.landing-logo-key {
+color: var(--teal);
+}
+
+.landing-logo-gati {
+color: var(--dark);
+}
+
+/* ---------------------------------------------------------
+Information Navigation
+--------------------------------------------------------- */
+
+.landing-info-nav {
+display: flex;
+align-items: center;
+gap: 2px;
+
+padding: 4px;
+
+background: rgba(var(--white-rgb), 0.9);
+
+border-radius: 999px;
+
+box-shadow:
+    0 1px 1px rgba(var(--dark-rgb), 0.04);
+
+border: 1px solid rgba(var(--dark-rgb), 0.01);
+
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+
+}
+
+.landing-info-nav a {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+padding: 8px 16px;
+
+border-radius: 999px;
+
+color: rgba(var(--dark-rgb), 0.8);
+
+text-decoration: none;
+
+font-size: 13px;
+font-weight: 500;
+
+white-space: nowrap;
+
+transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+.landing-info-nav a:hover {
+background: rgba(var(--teal-rgb), 0.12);
+color: var(--teal);
+}
+
+.landing-info-nav a:active {
+background: var(--white);
+
+color: var(--dark);
+
+box-shadow:
+    0 1px 3px rgba(var(--dark-rgb), 0.08);
+
+}
+
+/* ---------------------------------------------------------
+Mobile Navigation
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+.landing-header {
+    padding: 12px 12px 0;
+}
+
+.landing-nav {
+    padding: 0 16px;
+}
+
+.landing-info-nav {
+    gap: 0;
+}
+
+.landing-info-nav a {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+}
+
+@media (max-width: 480px) {
+
+.landing-logo {
+    font-size: 18px;
+}
+
+.landing-info-nav a {
+    padding: 7px 8px;
+    font-size: 12px;
+}
+
+}
+
+/* ---------------------------------------------------------
+Main
+--------------------------------------------------------- */
+
+.landing-main {
+width: 100%;
+max-width: 1280px;
+
+margin: 0 auto;
+
+padding:
+    104px 24px 40px;
+
+}
+
+/* ---------------------------------------------------------
+Bento Grid
+--------------------------------------------------------- */
+
+.landing-grid {
+width: 100%;
+max-width: 1152px;
+
+margin: 0 auto;
+
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+
+gap: 24px;
+
+}
+
+/* ---------------------------------------------------------
+Hero
+--------------------------------------------------------- */
+
+.landing-hero {
+grid-column: 1 / -1;
+
+background: var(--white);
+
+border: 1px solid rgba(var(--dark-rgb), 0.10);
+border-radius: 16px;
+
+padding: 40px;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+gap: 40px;
+
+box-shadow:
+    0 2px 8px rgba(var(--dark-rgb), 0.04);
+
+}
+
+.landing-hero-content {
+max-width: 680px;
+}
+
+/* Eyebrow */
+
+.landing-eyebrow {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+
+padding: 6px 12px;
+
+margin-bottom: 16px;
+
+border-radius: 999px;
+
+background: var(--mint);
+color: var(--teal);
+
+font-size: 12px;
+font-weight: 600;
+letter-spacing: 0.02em;
+
+}
+
+.landing-eyebrow-dot {
+width: 7px;
+height: 7px;
+
+border-radius: 50%;
+
+background: var(--teal);
+
+}
+
+/* Hero heading */
+
+.landing-hero h1 {
+margin: 0 0 12px;
+
+color: var(--dark);
+
+font-size: 36px;
+line-height: 1.15;
+
+font-weight: 700;
+
+letter-spacing: -0.025em;
+
+}
+
+/* Hero paragraph */
+
+.landing-hero p {
+margin: 0;
+
+max-width: 620px;
+
+color: rgba(var(--dark-rgb), 0.82);
+
+font-size: 16px;
+line-height: 1.6;
+
+}
+
+/* ---------------------------------------------------------
+Hero Buttons
+--------------------------------------------------------- */
+
+.landing-hero-actions {
+display: flex;
+align-items: center;
+gap: 16px;
+
+flex-shrink: 0;
+
+}
+
+.landing-button {
+min-width: 130px;
+
+padding: 14px 24px;
+
+border-radius: 12px;
+
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+text-decoration: none;
+
+font-size: 14px;
+font-weight: 600;
+
+transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+
+}
+
+.landing-button:active {
+transform: translateY(1px);
+}
+
+/* Primary */
+
+.landing-button-primary {
+background: var(--teal);
+color: var(--light);
+
+box-shadow:
+    0 2px 5px rgba(var(--teal-rgb), 0.18);
+
+}
+
+.landing-button-primary:hover {
+background: var(--teal-dark);
+}
+
+/* Secondary */
+
+.landing-button-secondary {
+background: var(--white);
+color: var(--dark);
+
+border: 1px solid rgba(var(--dark-rgb), 0.20);
+
+}
+
+.landing-button-secondary:hover {
+background: var(--mint);
+}
+
+/* ---------------------------------------------------------
+Information Cards
+--------------------------------------------------------- */
+
+.landing-card {
+background: var(--white);
+
+border: 1px solid rgba(var(--dark-rgb), 0.10);
+border-radius: 16px;
+
+padding: 28px;
+
+min-height: 300px;
+
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+box-shadow:
+    0 2px 8px rgba(var(--dark-rgb), 0.04);
+
+}
+
+.landing-card-icon-coral {
+color: var(--coral);
+}
+
+.landing-card-icon-orange {
+color: var(--orange);
+}
+
+/* Card heading */
+
+.landing-card h2 {
+margin: 0 0 12px;
+
+color: var(--dark);
+
+font-size: 20px;
+line-height: 1.4;
+
+font-weight: 600;
+
+letter-spacing: -0.015em;
+
+}
+
+/* Card paragraph */
+
+.landing-card p {
+margin: 0;
+
+color: rgba(var(--dark-rgb), 0.82);
+
+font-size: 14px;
+line-height: 1.7;
+
+}
+
+/* Card footer */
+
+.landing-card-footer {
+margin-top: 24px;
+padding-top: 20px;
+
+border-top: 1px solid rgba(var(--dark-rgb), 0.10);
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+gap: 12px;
+
+color: rgba(var(--dark-rgb), 0.8);
+
+font-size: 12px;
+font-weight: 500;
+
+}
+
+.landing-card-footer span:first-child {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.landing-card-footer strong {
+color: var(--dark);
+
+font-size: 12px;
+font-weight: 600;
+
+text-align: right;
+
+}
+
+/* Footer dots */
+
+.landing-footer-dot {
+width: 7px;
+height: 7px;
+
+border-radius: 50%;
+
+background: var(--teal);
+
+}
+
+.landing-footer-dot-coral {
+background: var(--coral);
+}
+
+.landing-footer-dot-orange {
+background: var(--orange);
+}
+
+/* ---------------------------------------------------------
+Responsive
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+.landing-grid {
+    grid-template-columns: 1fr;
+}
+
+.landing-hero {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.landing-hero-actions {
+    width: 100%;
+}
+
+.landing-button {
+    flex: 1;
+}
+
+}
+
+@media (max-width: 700px) {
+
+.landing-header {
+    padding: 12px 12px 0;
+}
+
+.landing-nav {
+    padding: 0 16px;
+}
+
+.landing-info-nav {
+    gap: 14px;
+}
+
+.landing-info-nav a {
+    font-size: 12px;
+}
+
+.landing-main {
+    padding:
+        92px 12px 24px;
+}
+
+.landing-hero {
+    padding: 28px 24px;
+}
+
+.landing-hero h1 {
+    font-size: 30px;
+}
+
+.landing-hero-actions {
+    flex-direction: column;
+}
+
+.landing-button {
+    width: 100%;
+}
+
+}
+
+@media (max-width: 520px) {
+
+.landing-card {
+    min-height: auto;
+}
+
+.landing-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.landing-card-footer strong {
+    text-align: left;
+}
+
+}
+
+/* ---------------------------------------------------------
+   Legal Pages
+   --------------------------------------------------------- */
+
+.legal-main {
+    width: min(1100px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 120px 0 60px;
+}
+
+.legal-card {
+    background: rgba(var(--light-rgb), 0.72);
+
+    border: 1px solid rgba(var(--white-rgb), 0.45);
+    border-radius: 24px;
+
+    padding: 48px;
+
+    box-shadow:
+        0 12px 30px rgba(var(--dark-rgb), 0.08),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.35);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.legal-header {
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+
+    border-bottom: 1px solid rgba(var(--dark-rgb), 0.10);
+}
+
+.legal-label {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: var(--teal);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.legal-header h1 {
+    margin: 0;
+
+    color: var(--dark);
+
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+}
+
+.legal-updated {
+    margin: 14px 0 0;
+
+    color: rgba(var(--dark-rgb), 0.78);
+
+    font-size: 13px;
+}
+
+.legal-section {
+    margin-bottom: 32px;
+}
+
+.legal-section:last-child {
+    margin-bottom: 0;
+}
+
+.legal-section h2 {
+    margin: 0 0 10px;
+
+    color: var(--dark);
+
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.legal-section p {
+    margin: 0 0 12px;
+
+    color: rgba(var(--dark-rgb), 0.82);
+
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.legal-section p:last-child {
+    margin-bottom: 0;
+}
+
+.legal-section a {
+    color: var(--teal);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.legal-section a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   Legal Pages — Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .legal-main {
+        width: min(100% - 24px, 900px);
+        padding: 100px 0 40px;
+    }
+
+    .legal-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .legal-section h2 {
+        font-size: 18px;
+    }
+
+    .legal-section p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+}
+
+.legal-page {
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.landing-info-nav a:hover,
+.landing-info-nav a.active {
+    background: rgba(var(--teal-rgb), 0.12);
+    color: var(--teal);
+}
+
+/* ========================================
+   HELP & GUIDES
+======================================== */
+
+.help-section {
+    margin-bottom: 48px;
+}
+
+.help-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.help-section-header {
+    margin-bottom: 20px;
+}
+
+.help-section-label {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: var(--teal);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.help-section-header h2 {
+    margin: 0;
+
+    color: var(--dark);
+
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+/* Guide cards */
+
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.help-card {
+    min-height: 210px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 24px;
+
+    background: rgba(var(--light-rgb), 0.55);
+
+    border: 1px solid rgba(var(--white-rgb), 0.42);
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 20px rgba(var(--dark-rgb), 0.05),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.28);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.help-card:hover {
+    transform: translateY(-3px);
+
+    background: rgba(var(--light-rgb), 0.72);
+
+    box-shadow:
+        0 12px 26px rgba(var(--dark-rgb), 0.08),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.35);
+}
+
+/* Card label */
+
+.help-card-label {
+    display: inline-block;
+    margin-bottom: 10px;
+
+    color: var(--teal);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+/* Card heading */
+
+.help-card h3 {
+    margin: 0 0 10px;
+
+    color: var(--dark);
+
+    font-size: 19px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+/* Card description */
+
+.help-card p {
+    margin: 0;
+
+    color: rgba(var(--dark-rgb), 0.82);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Card link */
+
+.help-card-link {
+    display: inline-block;
+    margin-top: 20px;
+
+    color: var(--teal);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Back link */
+
+.help-back {
+    margin-top: 40px;
+    padding-top: 28px;
+
+    border-top: 1px solid rgba(var(--dark-rgb), 0.10);
+}
+
+.help-back a {
+    color: var(--teal);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.help-back a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .help-section {
+        margin-bottom: 40px;
+    }
+
+    .help-section-header h2 {
+        font-size: 21px;
+    }
+
+    .help-card {
+        min-height: 190px;
+        padding: 22px;
+    }
+
+}
+
+.help-formula {
+    margin: 16px 0;
+    padding: 14px 18px;
+
+    background: rgba(var(--teal-rgb), 0.08);
+
+    border: 1px solid rgba(var(--teal-rgb), 0.16);
+    border-radius: 12px;
+
+    color: var(--dark);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+/* ========================================
+   HELP & GUIDES BUTTON
+======================================== */
+
+.help-guides-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 28px;
+    padding: 9px 16px;
+
+    background: rgba(var(--light-rgb), 0.38);
+
+    border: 1px solid rgba(var(--white-rgb), 0.32);
+    border-radius: 999px;
+
+    color: var(--dark);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 4px 12px rgba(var(--dark-rgb), 0.04),
+        inset 0 1px 0 rgba(var(--white-rgb), 0.24);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.help-guides-button:hover {
+    background: rgba(var(--teal-rgb), 0.12);
+
+    color: var(--teal);
+
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   Task 5 polish overrides — a11y / CLS / responsive
+   Plain look preserved. No HTML/JS changes required.
+   Font note: body uses Arial stack; landing/legal use Inter
+   (unresolved conflict — Inter never loaded, falls back to
+   system sans). JetBrains Mono referenced by .help-formula
+   but never loaded — TODO: self-host or drop reference.
+========================================================= */
+
+/* Anchor offset under fixed 64px glass nav */
+[id] {
+    scroll-margin-top: 90px;
+}
+
+/* Unify top offset under fixed header */
+.landing-main {
+    padding-top: 112px;
+}
+.legal-main {
+    padding-top: 112px;
+}
+
+/* Fluid type: hero 30-36px, modal WPM 48-60px */
+.landing-hero h1 {
+    font-size: clamp(30px, 4vw, 36px);
+}
+#result-wpm {
+    font-size: clamp(48px, 12vw, 60px);
+    line-height: 1;
+}
+
+/* Contrast hardening: darker teal for small text on light bg */
+.landing-eyebrow,
+.help-card-label,
+.help-section-label,
+.legal-label,
+.help-card-link,
+.help-back a,
+.legal-section a {
+    color: var(--teal-dark);
+}
+.landing-info-nav a:hover,
+.landing-info-nav a.active {
+    color: var(--teal-dark);
+}
+
+/* Tailwind arbitrary 10px utilities in app pages -> 12px min */
+[class*="text-[10px]"] {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+}
+
+/* Focus: keep 2px teal offset 3px, extend to pills/cards */
+button:focus-visible,
+a:focus-visible,
+.help-card:focus-visible,
+[role="button"]:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+}
+/* Duration/mode pills are buttons/links inside rounded containers */
+div[class*="rounded-full"] button:focus-visible,
+nav[aria-label="Typing test modes"] a:focus-visible {
+    outline: 2px solid var(--teal-dark);
+    outline-offset: 2px;
+}
+
+/* Visible typing focus: textarea itself stays visually hidden
+   (engine needs focus), so ring the passage when anything
+   inside main has focus. Do NOT rely on textarea outline alone. */
+main:focus-within section[aria-label="Typing passage"] {
+    box-shadow: 0 0 0 3px rgba(var(--teal-rgb), 0.35), var(--shadow-sm);
+}
+textarea:focus {
+    outline: none;
+}
+
+/* 2-col bento step between 700-900px (was abrupt 3->1 at 900) */
+@media (max-width: 900px) and (min-width: 701px) {
+    .landing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .landing-hero {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Both test modes share one 4-up stat grid (grid-cols-2 base,
+   sm:grid-cols-4), so both collapse identically via Tailwind.
+   No custom collapse override needed. */
+
+/* 520px: dead hide rule repaired — keep all info links visible,
+   shrink only. Hiding Terms at 520px hurt navigation. */
+@media (max-width: 520px) {
+    .landing-info-nav a:nth-child(3),
+    .landing-info-nav a:nth-child(4),
+    .landing-info-nav a:nth-child(5) {
+        display: inline-flex;
+    }
+}
+
+/* CLS: reserve ad slot height to avoid layout shift */
+.ad-slot,
+ins.adsbygoogle {
+    display: block;
+    min-height: 90px;
+}
+@media (max-width: 700px) {
+    .ad-slot,
+    ins.adsbygoogle {
+        min-height: 60px;
+    }
+}
+
+/* Reduced motion: kill cursor blink + hover lift */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .typing-cursor::after {
+        animation: none;
+    }
+    .help-card:hover,
+    .help-guides-button:hover,
+    .landing-button:active {
+        transform: none;
+    }
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   Role-split headers + floater + shared footer + Phase 2
+   Test pages: logo left, mode switch right, info button last.
+   Other pages: logo left, info button at bar end.
+   Help lives in floating button, not pill.
+   No Tailwind dependency: pure shared CSS so chrome renders
+   identical even if CDN blocked.
+========================================================= */
+
+/* Header row: logo left, mode next, info + help right */
+.landing-nav {
+    gap: 10px;
+}
+.landing-info-nav {
+    margin-left: auto;
+}
+
+/* Mode switch sits at bar end: auto margin pushes it right on
+   test pages. Links keep fixed min-width so active/inactive
+   toggle never changes bar width. */
+.site-mode-switch {
+    margin-left: auto;
+}
+.site-mode-switch {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+    background: rgba(var(--white-rgb), 0.9);
+    border: 1px solid rgba(var(--dark-rgb), 0.01);
+    border-radius: 999px;
+    box-shadow: 0 1px 1px rgba(var(--dark-rgb), 0.04);
+}
+.site-mode-switch a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 78px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    color: rgba(var(--dark-rgb), 0.85);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.site-mode-switch a:hover {
+    background: rgba(var(--teal-rgb), 0.12);
+    color: var(--teal-dark);
+}
+.site-mode-switch a[aria-current="page"] {
+    background: var(--white);
+    color: var(--dark);
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(var(--dark-rgb), 0.08);
+}
+.site-mode-switch a:focus-visible {
+    outline: 2px solid var(--teal-dark);
+    outline-offset: 2px;
+}
+
+/* Compact info button: collapsed "i" circle morphs to pill.
+   Same expand pattern as floater. Info sits at very bar end. */
+.site-info {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+/* Mode switch already absorbs free space, so info docks after it */
+.site-mode-switch ~ .site-info {
+    margin-left: 0;
+}
+.site-info-drop {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    background: rgba(var(--white-rgb), 0.9);
+    border: 1px solid rgba(var(--dark-rgb), 0.01);
+    border-radius: 999px;
+    box-shadow: 0 1px 1px rgba(var(--dark-rgb), 0.04);
+}
+.site-info-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--white);
+    color: rgba(var(--dark-rgb), 0.85);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    flex-shrink: 0;
+}
+.site-info-btn::-webkit-details-marker {
+    display: none;
+}
+.site-info-btn::marker {
+    content: none;
+}
+.site-info-btn:hover {
+    background: rgba(var(--teal-rgb), 0.12);
+    color: var(--teal-dark);
+}
+.site-info-btn:focus-visible {
+    outline: 2px solid var(--teal-dark);
+    outline-offset: 2px;
+}
+.site-info-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.25s ease, opacity 0.2s ease, margin-left 0.25s ease;
+}
+.site-info-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    color: rgba(var(--dark-rgb), 0.85);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.site-info-links a:hover {
+    background: rgba(var(--teal-rgb), 0.12);
+    color: var(--teal-dark);
+}
+.site-info-links a[aria-current="page"] {
+    background: var(--white);
+    color: var(--dark);
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(var(--dark-rgb), 0.08);
+}
+.site-info-links a:focus-visible {
+    outline: 2px solid var(--teal-dark);
+    outline-offset: 2px;
+}
+/* Open on hover (capable pointers only: no mobile hover traps),
+   on keyboard focus, or when tapped open via details toggle */
+@media (hover: hover) {
+    .site-info:hover .site-info-links {
+        max-width: 320px;
+        opacity: 1;
+        margin-left: 6px;
+    }
+}
+.site-info:focus-within .site-info-links,
+.site-info-drop[open] .site-info-links {
+    max-width: 320px;
+    opacity: 1;
+    margin-left: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .site-info-links {
+        transition: none;
+    }
+}
+
+/* Floating help button: fixed circle, morphs to pill on hover/focus */
+.site-floater {
+    position: fixed;
+    right: 20px;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    min-width: 48px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--teal-dark);
+    color: var(--white);
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(var(--dark-rgb), 0.25);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.site-floater:hover {
+    background: var(--teal-ink);
+    box-shadow: 0 6px 18px rgba(var(--dark-rgb), 0.3);
+}
+.site-floater:focus-visible {
+    outline: 2px solid var(--dark);
+    outline-offset: 3px;
+}
+.site-floater-mark {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+.site-floater-text {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 600;
+    transition: max-width 0.25s ease, opacity 0.2s ease, margin-left 0.25s ease;
+}
+.site-floater:hover .site-floater-text,
+.site-floater:focus-visible .site-floater-text,
+.site-floater:focus .site-floater-text {
+    max-width: 160px;
+    opacity: 1;
+    margin-left: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .site-floater-text {
+        transition: none;
+    }
+}
+
+/* Shared footer: same block every page (was timemode-only) */
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 24px;
+    padding: 20px 12px 8px;
+    border-top: 1px solid rgba(var(--dark-rgb), 0.1);
+    color: rgba(var(--dark-rgb), 0.82);
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+.site-footer p {
+    margin: 0;
+}
+
+/* App pages: offset under fixed header (matches landing/legal 112px) */
+.app-shell {
+    padding-top: 112px;
+}
+
+/* Ad slot reserve (class-only; matches inline 100x300 used on some pages) */
+.ad-slot-reserve {
+    display: block;
+    min-height: 100px;
+    min-width: 300px;
+}
+
+/* ---------------------------------------------------------
+   Phase 2: practice-text color access
+   Normal text 4.5:1, large 3:1, labels 12px min.
+   Before -> after on page bg: dark/45 2.15, dark/50 2.28,
+   dark/55 2.70, dark/60 3.06, teal-on-white 3.32.
+   After: dark at 0.85 -> 4.71; teal-dark on white 5.16;
+   teal-ink #175E54 on white 7.59, on card ~6.1, on bg 4.96.
+--------------------------------------------------------- */
+.text-keygati-dark\/45,
+.text-keygati-dark\/50,
+.text-keygati-dark\/55,
+.text-keygati-dark\/60 {
+    color: rgba(var(--dark-rgb), 0.85) !important;
+}
+.text-keygati-teal {
+    color: var(--teal-dark) !important;
+}
+/* Tiny status line on translucent passage card needs deepest teal */
+section[aria-label="Typing passage"] .text-keygati-teal {
+    color: var(--teal-ink) !important;
+}
+/* text-xs is already 12px; guard holds the 12px min */
+[class*="text-xs"] {
+    font-size: 12px !important;
+}
+
+/* ---------------------------------------------------------
+   Unified header responsive: shrink, wrap, never hide
+--------------------------------------------------------- */
+@media (max-width: 900px) {
+    .landing-nav {
+        gap: 6px;
+    }
+    .site-mode-switch a,
+    .site-info-links a {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 700px) {
+    .landing-nav {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 64px;
+        border-radius: 26px;
+        padding: 10px 12px;
+        row-gap: 8px;
+    }
+    .site-info,
+    .site-mode-switch {
+        margin-left: 0;
+    }
+    /* Taller wrapped header needs deeper offset on all shells */
+    .landing-main,
+    .legal-main,
+    .app-shell {
+        padding-top: 168px;
+    }
+}

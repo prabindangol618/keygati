@@ -1,60 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
     <url>
         <loc>https://keygati.com/</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
-        <loc>https://keygati.com/timemode.html</loc>
+        <loc>https://keygati.com/time-mode.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
-        <loc>https://keygati.com/words.html</loc>
+        <loc>https://keygati.com/words-test.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/about.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/help.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/wpm-guide.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/good-typing-speed.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/improve-typing-speed.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/improve-typing-accuracy.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/touch-typing-beginners.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/how-time-mode-works.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/how-words-test-works.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/privacy.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
     <url>
         <loc>https://keygati.com/terms.html</loc>
+        <lastmod>2026-10-07</lastmod>
     </url>
-
 </urlset>

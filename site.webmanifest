@@ -1,0 +1,18 @@
+{
+  "name": "KeyGati — Free Online Typing Speed Test",
+  "short_name": "KeyGati",
+  "description": "Free online typing speed test for WPM and accuracy.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#A8DADC",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

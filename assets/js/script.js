@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
     const typingText =
         document.getElementById("typing-text");
 
@@ -36,9 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const charStatsValue =
         document.getElementById("char-stats-value");
 
+    const charStatsTotal =
+        document.getElementById("char-stats-total");
+
     const typingInput =
         document.getElementById("typing-input");
-
 
     const duration15Button =
         document.getElementById("duration-15");
@@ -51,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const duration120Button =
         document.getElementById("duration-120");
-
 
     const resultsModal =
         document.getElementById("results-modal");
@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const resultRestartButton =
         document.getElementById("result-restart-button");
-
 
     const passages = [
 
@@ -305,7 +304,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ];
 
-
     let passage = "";
 
     let typedText = "";
@@ -324,7 +322,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let testFinished = false;
 
-
     /* ================================
        RESTART
     ================================ */
@@ -338,7 +335,6 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(timer);
 
         timer = null;
-
 
         /* Reset test */
 
@@ -356,21 +352,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         testFinished = false;
 
-
         /* Reset display */
 
         timeValue.textContent =
-            testDuration + "s";
+            testDuration;
 
         wpmValue.textContent =
-            "0 wpm";
+            "0";
 
-        accuracyValue.innerHTML =
-            '100<span class="text-sm text-keygati-dark/40">%</span>';
+        accuracyValue.textContent =
+            "100";
 
-        charStatsValue.innerHTML =
-            '0<span class="text-sm text-keygati-coral"> / 0</span>';
+        charStatsValue.textContent =
+            "0";
 
+        charStatsTotal.textContent =
+            "0";
 
         /* Show fresh passage */
 
@@ -379,7 +376,6 @@ document.addEventListener("DOMContentLoaded", function () {
         renderPassage();
 
     }
-
 
     function selectRandomPassage() {
 
@@ -390,7 +386,6 @@ document.addEventListener("DOMContentLoaded", function () {
             passages[randomIndex];
 
     }
-
 
     function setDuration(duration) {
 
@@ -414,29 +409,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         testFinished = false;
 
-
         timeValue.textContent =
-            testDuration + "s";
+            testDuration;
 
         wpmValue.textContent =
-            "0 wpm";
+            "0";
 
-        accuracyValue.innerHTML =
-            '100<span class="text-sm text-keygati-dark/40">%</span>';
+        accuracyValue.textContent =
+            "100";
 
-        charStatsValue.innerHTML =
-            '0<span class="text-sm text-keygati-coral"> / 0</span>';
+        charStatsValue.textContent =
+            "0";
 
+        charStatsTotal.textContent =
+            "0";
 
         /* Select a new random passage */
 
         selectRandomPassage();
 
-
         /* Show the new passage */
 
         renderPassage();
-
 
         /* ================================
            UPDATE ACTIVE DURATION BUTTON
@@ -462,7 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "text-white"
         );
 
-
         if (duration === 15) {
 
             duration15Button.classList.add(
@@ -471,7 +464,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
         }
-
 
         if (duration === 30) {
 
@@ -482,7 +474,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
         if (duration === 60) {
 
             duration60Button.classList.add(
@@ -491,7 +482,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
         }
-
 
         if (duration === 120) {
 
@@ -504,7 +494,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     /* ================================
        BUTTON LISTENERS
     ================================ */
@@ -515,13 +504,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
     duration15Button.addEventListener("click", function () {
 
         setDuration(15);
 
     });
-
 
     duration30Button.addEventListener("click", function () {
 
@@ -529,20 +516,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
     duration60Button.addEventListener("click", function () {
 
         setDuration(60);
 
     });
 
-
     duration120Button.addEventListener("click", function () {
 
         setDuration(120);
 
     });
-
 
     resultRestartButton.addEventListener("click", function () {
 
@@ -553,7 +537,6 @@ document.addEventListener("DOMContentLoaded", function () {
         restartTest();
 
     });
-
 
     /* ================================
        RENDER PASSAGE
@@ -575,7 +558,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const character = passage[i];
-
 
             if (i >= typedText.length) {
 
@@ -600,7 +582,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
         // Cursor at the very end when passage is completed
 
         if (typedText.length >= passage.length) {
@@ -610,11 +591,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
         typingText.innerHTML = html;
 
     }
-
 
     /* ================================
        START TIMER
@@ -630,14 +609,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("TIMER STARTED");
 
-
         timer = setInterval(function () {
 
             timeLeft--;
 
             timeValue.textContent =
-                timeLeft + "s";
-
+                timeLeft;
 
             if (timeLeft <= 0) {
 
@@ -659,7 +636,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     /* ================================
        UPDATE WPM
     ================================ */
@@ -669,33 +645,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const elapsedSeconds =
             testDuration - timeLeft;
 
-
         if (elapsedSeconds <= 0) {
             return;
         }
 
-
         const correctCharacters =
             getCorrectCharacters();
-
 
         const minutes =
             elapsedSeconds / 60;
 
-
         const words =
             correctCharacters / 5;
-
 
         const wpm =
             Math.round(words / minutes);
 
-
         wpmValue.textContent =
-            wpm + " wpm";
+            wpm;
 
     }
-
 
     /* ================================
        COUNT CORRECT CHARACTERS
@@ -707,7 +676,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     /* ================================
        UPDATE ACCURACY
     ================================ */
@@ -717,33 +685,27 @@ document.addEventListener("DOMContentLoaded", function () {
         const totalCharacters =
             totalTypedCharacters;
 
-
         if (totalCharacters === 0) {
 
-            accuracyValue.innerHTML =
-                '100<span class="text-sm text-keygati-dark/40">%</span>';
+            accuracyValue.textContent =
+                "100";
 
             return;
 
         }
 
-
         const correctCharacters =
             getCorrectCharacters();
-
 
         const accuracy =
             Math.round(
                 (correctCharacters / totalCharacters) * 100
             );
 
-
-        accuracyValue.innerHTML =
-            accuracy +
-            '<span class="text-sm text-keygati-dark/40">%</span>';
+        accuracyValue.textContent =
+            accuracy;
 
     }
-
 
     /* ================================
        UPDATE CHARACTER STATS
@@ -754,19 +716,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const totalCharacters =
             totalTypedCharacters;
 
-
         const correctCharacters =
             getCorrectCharacters();
 
+        charStatsValue.textContent =
+            correctCharacters;
 
-        charStatsValue.innerHTML =
-            correctCharacters +
-            '<span class="text-sm text-keygati-coral"> / ' +
-            totalCharacters +
-            '</span>';
+        charStatsTotal.textContent =
+            totalCharacters;
 
     }
-
 
     /* ================================
        SHOW RESULTS
@@ -777,15 +736,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const correctCharacters =
             getCorrectCharacters();
 
-
         const totalCharacters =
             totalTypedCharacters;
-
 
         /* Calculate accuracy */
 
         let accuracy = 100;
-
 
         if (totalCharacters > 0) {
 
@@ -796,36 +752,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
         /* Calculate WPM */
 
         const words =
             correctCharacters / 5;
 
-
         const minutes =
             testDuration / 60;
 
-
         const wpm =
             Math.round(words / minutes);
-
 
         /* Put results into popup */
 
         resultWpm.textContent =
             wpm;
 
-
         resultAccuracy.textContent =
             accuracy + "%";
-
 
         resultCharacters.textContent =
             correctCharacters +
             " / " +
             totalCharacters;
-
 
         /* Show popup */
 
@@ -835,11 +784,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     /* ================================
        TEXT INPUT
     ================================ */
-
 
     /*
      * Process a character typed by the user.
@@ -853,16 +800,13 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         if (!character || character.length !== 1) {
             return;
         }
 
-
         typedText += character;
 
         totalTypedCharacters++;
-
 
         /*
          * Check whether the character
@@ -872,13 +816,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const currentIndex =
             typedText.length - 1;
 
-
         if (character === passage[currentIndex]) {
 
             totalCorrectCharacters++;
 
         }
-
 
         /*
          * Start timer on first character.
@@ -889,7 +831,6 @@ document.addEventListener("DOMContentLoaded", function () {
             startTimer();
 
         }
-
 
         /*
          * Update statistics.
@@ -902,7 +843,6 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCharacterStats();
 
         updateWPM();
-
 
         /*
          * If the passage is complete,
@@ -922,7 +862,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     /*
      * MOBILE / TOUCH INPUT
      *
@@ -936,27 +875,22 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         if (testFinished) {
             return;
         }
 
-
         const newCharacters =
             event.data;
-
 
         if (!newCharacters) {
             return;
         }
-
 
         for (const character of newCharacters) {
 
             processCharacter(character);
 
         }
-
 
         /*
          * Clear the textarea after processing.
@@ -965,7 +899,6 @@ document.addEventListener("DOMContentLoaded", function () {
         typingInput.value = "";
 
     });
-
 
     /*
      * DESKTOP KEYBOARD INPUT
@@ -979,11 +912,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         if (testFinished) {
             return;
         }
-
 
         /*
          * Ignore control keys.
@@ -997,7 +928,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         /*
          * Only process single-character keys.
          */
@@ -1006,14 +936,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         event.preventDefault();
-
 
         processCharacter(event.key);
 
     });
-
 
     /*
      * Focus the hidden input on touch devices.
@@ -1032,7 +959,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     /*
      * Mobile typing area activation.
      */
@@ -1043,16 +969,13 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         if (event.target.closest("button")) {
             return;
         }
 
-
         focusTypingInput();
 
     });
-
 
     /*
      * Initial focus for mobile devices.
@@ -1060,18 +983,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     focusTypingInput();
 
-
     /* ================================
        INITIAL STATE
     ================================ */
 
     timeValue.textContent =
-        testDuration + "s";
-
+        testDuration;
 
     wpmValue.textContent =
-        "0 wpm";
-
+        "0";
 
     selectRandomPassage();
 

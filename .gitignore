@@ -1,0 +1,31 @@
+# Codemap change-detection state (regenerable via codemap scripts)
+.slim/
+
+# Dependencies (no build step; kept out if ever added)
+node_modules/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+
+# Logs and local temp
+*.log
+*.tmp
+/tmp/
+
+# Local preview / test servers
+.server.log
+
+# Environment overrides (never commit secrets)
+.env
+.env.*
+!.env.example
